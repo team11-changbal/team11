@@ -1,0 +1,44 @@
+STRUCTURE YOUR PROMPT (the 4-part template)
+
+Genre: "<specific subgenres here>" Exclude: "<stuff you don’t want>" Instruments: "<key instruments + vocal treatment>" Tags: "<BPM; mood; drop type; extras>"
+
+✅ Example Genre: "Trance, House" Exclude: "Trap, Pop, Rock, Country, Acoustic" Instruments: "soft female vocals; supersaw leads; pounding percussion; rolling bassline; trance pads" Tags: "138 BPM; hypnotic trance; euphoric drop; playful humor; dissonant."
+2) LYRICS & SECTION CUES (Suno listens)
+
+Use [Intro], [Verse], [Chorus], [Bridge], [Drop], [Outro].
+Add performance cues in parentheses: (whispered), (airy), (belted), (instrumental break). Keep total lyric text ≤ ~100–120 words for best consistency.
+3) DATA-MINED “DEFAULT STYLES” (good seed vocabulary)
+
+(Use sparingly: 2–4 styles per prompt.) pop, rock, rap, metal, electronic, upbeat, melodic, dark, piano, hip hop, epic, bass, emotional, acoustic, aggressive, trap, country, edm, r&b, jazz, ballad, funk, guitar, hard rock, slow, synthwave, dance, folk, heavy metal, atmospheric, catchy, sad, indie, house, j-pop, dreamy, soul, punk, powerful, male voice, lo-fi, uplifting, female voice, chill, techno, ambient, blues, romantic, male vocals, reggae, orchestral, opera, female vocals, fast, energetic, vocaloid, drum, melancholic, intense, dubstep, alternative rock, emo, disco, smooth, experimental, synth, psychedelic, progressive, k-pop, mellow, groovy, 80s, japanese, anthemic, violin, nu metal, pop rock, electric guitar, cinematic, classical, cantonese, heartfelt, ethereal, swing, electro, flute, female singer, grunge, deep, drum and bass, trance, indie pop, gospel, anime, math rock, 90s, dramatic, industrial, electropop, phonk, beat, acoustic guitar, futuristic, bounce drop, mutation funk
+4) SMART CO-OCCURRENCE HINTS (what pairs well)
+
+(Condensed from the co-existing-styles data—use these as “mix & match” hints.)
+
+• Techno ↔ House, Trance, Ambient → “Techno / Trance; 138–144 BPM; hypnotic; rolling bassline” • House ↔ Deep, Techno, Electro, Pop → “Deep/Tech House; punchy 909; groovy” • Trance ↔ Techno, House, Ambient → “Euphoric supersaw drops; long risers; 130–142 BPM” • Synthwave ↔ Synth, Electro, 80s, Dark → “Retro arps; neon pads; tape-style reverb” • Bass ↔ Drum, Drum & Bass → “Heavy low-end; transient claps; sub presence” • Pop ↔ Electro, Synth, Beat → “Catchy toplines; structured hooks; brighter mix” • Electro ↔ Electronic, Pop, Synth → “Tight kicks; sharp stabs; sidechain pump” • Ambient ↔ Techno, Trance, House → “Atmospheric pads; long tails; minimal vocals” • Lo-fi ↔ Chill, Funk, Jazz → “Soft transients; vinyl texture; mellow BPM” • Orchestral ↔ Epic, Cinematic → “Strings/brass swells; impacts; trailer energy”
+
+Usage tip: pick ONE spine (e.g., “Techno House”) and add ONE color (e.g., “Synthwave 80s arps”)—avoid stacking too many.
+5) TAG BANK (grab-and-go phrasing)
+
+Energy/Tempo: “138 BPM”, “142 BPM”, “fast”, “slow build” Mood: “dark”, “hypnotic”, “uplifting”, “dreamy”, “melancholic”, “playful”, “anthemic” Texture: “supersaw leads”, “metallic stabs”, “909 percussion”, “rolling bassline”, “retro 90s arps”, “atmospheric pads” Vocals: “whispered female vocals only (no belting)”, “breathy layered harmonies”, “[Instrumental]” Structure: “long riser”, “euphoric drop”, “double drop”, “instrumental break”, “key change after verse 2” Era/Influence: “90s techno nostalgia”, “80s synth aesthetic” FX/Production: “sidechain pump”, “lo-fi vinyl crackle”, “tape delay”, “gated reverb”, “stereo wideners”
+6) EDM-FOCUSED STARTER COMBOS (copy & tweak)
+
+A) “Tech House / Trance; 138 BPM; supersaw drop; whispered female vocals; rolling bassline; 909 hats” B) “techno trance; 142 BPM; neon arps; dark pads; euphoric drop; 90s nostalgia” C) “[Instrumental] Techno Trance; 140 BPM; metallic stabs; gated pads; extended build; key change in final drop” D) “Deep/Tech House; 126–128 BPM; groovy low-end; airy vocal chops; minimal, hypnotic” E) “Trance anthem; 136–140 BPM; soaring leads; filtered snare rolls; hands-up (no belting vocals)” F) “Dark Synthwave / Electro; 100–115 BPM; analog bass; tape delay; cinematic atmosphere” G) “Festival Big Room / Tech House; 128 BPM; punchy kicks; bright plucks; anthemic hook” H) “Ambient Techno; 120–124 BPM; long reverb tails; granular textures; sparse percussion”
+7) AVOID THESE PITFALLS
+
+• Overstuffing: too many styles/instruments → muddy results.
+• Vague language: “nice, cool, energetic” (be concrete).
+• Ignoring iteration: change ONE lever per retry (BPM, key, vocal style).
+• Over-long lyrics: keep concise; use section cues.
+8) FAST EXAMPLES (drop-in style blocks)
+
+Example 1 — Retro Tech House Genre: "Techno House / Synthwave Hybrid" Exclude: "Trap, Pop, Rock, Country, Acoustic" Instruments: "whispered female vocals only; supersaw leads; metallic 90s synth stabs; rolling bassline; trance pads; pounding 909 percussion" Tags: "142 BPM; hypnotic trance; euphoric drop; 90s nostalgia; key change after verse 2; dissonant but euphoric"
+
+Example 2 — Instrumental Trance Builder Genre: "Progressive Trance" Exclude: "Vocals, Trap, Dubstep, Pop" Instruments: "[Instrumental]; layered pads; arpeggiated leads; filtered snares; long risers; sub-heavy kick" Tags: "136 BPM; extended build; euphoric peak; spacious reverb; neon atmosphere"
+
+Example 3 — Deep/Tech Minimal Genre: "Deep House / Tech House" Exclude: "Dubstep, Trap, Rock" Instruments: "dry punchy kick; warm sub; minimal chords; crisp hats; subtle vox chops" Tags: "126–128 BPM; hypnotic groove; low-swing; late-night vibe"
+9) WORKFLOW REMINDERS
+
+• Keep the total prompt under ~100 words.
+• A/B test: change just BPM or just “vocal style” between takes.
+• Save your best prompt templates; reuse with small tweaks.
+• If you want no vocals: add [Instrumental] and remove vocal mentions. 
