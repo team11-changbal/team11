@@ -19,7 +19,7 @@ Agent_1 output (`mood_analysis` + `history_match`)
 Matched genre, tempo, instrumentation, representative artist episode, artwork prompt
 
 ## Skills DB
-13 genres (Cool Jazz → Ballad Rock) — see `_orchestration_/Skills/Skills_Agent_4.md`
+13 genres (Cool Jazz → Ballad Rock) — see `Examples/Agent_2_DB_skill.md`
 
 ## Input Schema
 ```json
