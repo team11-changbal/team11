@@ -19,20 +19,22 @@ The output of lyrics and music style will be sent to 3rd party engine via API of
 
 # 2. System Architecture 
 
+
 [사용자 입력: 에세이 + 이미지/색상]   
       │   
       ▼   
-┌─────────────────────────────────────────────────────────────────┐  
-│ Claude Orchestrator (Context Engine)                            │  
-│                                                                 │  
-│ ① Agent_1 (Lyrics & Mood) : 에세이/무드 -> 서사 가사화             │  
-│ ② Agent_2 (Context & Skills) : 역사/문화/아티스트 DB 매칭          │  
-│ ③ Agent_3 (Suno API Architect) : 엔드포인트 & JSON 페이로드 규격화  │  
-│ ④ Agent_4 (Market Strategy) : US 차트 및 비주얼 프로덕션           │  
-└─────────────────────────────────────────────────────────────────┘  
+┌─────────────────────────────────────────────────────────────────┐   
+│ Claude Orchestrator (Context Engine)                            │   
+│                                                                 │   
+│ ① Agent_1 (Lyrics & Mood) : 에세이/무드 -> 서사 가사화             │   
+│ ② Agent_2 (Context & Skills) : 역사/문화/아티스트 DB 매칭          │   
+│ ③ Agent_3 (Suno API Architect) : 엔드포인트 & JSON 페이로드 규격화  │   
+│ ④ Agent_4 (Market Strategy) : US 차트 및 비주얼 프로덕션           │   
+└─────────────────────────────────────────────────────────────────┘   
       │   
       ▼ (API Request: POST /suno/v1/music)   
-[Unofficial Suno API ──> Suno AI 음원 자동 생성 및 콜백]  
+[Unofficial Suno API ──> Suno AI 음원 자동 생성 및 콜백]   
+
 ---
 
 # 3. Agent Specification
