@@ -22,7 +22,7 @@ Music as communication medium, not entertainment.
 |---|---|---|---|---|
 | Agent_1 | Lyricist & Mood Capturer | `Skills/Agent_1_skill.md` | v2.0 | Active (POC) |
 | Agent_2 | Cultural & Musical Skill Matcher | `Skills/Agent_2_skill.md` | v2.0 | Active (POC) |
-| Agent_3 | Suno API Architect | `Skills/Agent_3_skill.md` | v1.0 | **Pending** — Suno API not yet connected |
+| Agent_3 | Suno API Architect | `Skills/Agent_3_skill.md` | v1.0 | **done!** — Suno API not yet connected |
 | Agent_4 | UX Frontend | `Skills/Agent_4_skill.md` | v2.0 | Active — repo: `remix-of-life-soundtrack` |
 
 ---
