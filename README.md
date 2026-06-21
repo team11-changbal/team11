@@ -1,58 +1,70 @@
-# Life Soundtrack — Team 11
-
-> **"Turn any life moment into a song you'll keep forever."**
-
-Music as a new communication medium — not entertainment.
-
----
-
-## What It Is
-
-Life Soundtrack is a two-way social music platform. Users write a personal essay (10–15 sentences) about a life moment — a graduation, a breakup, a quiet Tuesday morning — and the system generates a fully produced song: lyrics in 5 languages, a matched music style rooted in cultural and historical context, and a commercial production strategy targeting global streaming.
+# Life Soundtrack — Orchestration Overview
+**Date:** 2026-06-20  
+**Version:** v3.0  
+**Status:** POC / Pitch Demo  
+**Spec:** `orchestration_v3.md`
 
 ---
 
-## System Architecture
+## Concept
+
+**"Turn any life moment into a song you'll keep forever."**
+
+Life Soundtrack is a two-way social music platform where users write a personal essay (10–15 sentences) about a life moment. A multi-agent AI pipeline analyzes the emotional tone, matches it to a historically and culturally grounded music style, and generates a fully produced song — lyrics in 5 languages, Suno-ready style tags, album artwork prompt, and a US chart strategy.
+
+Music as communication medium, not entertainment.
+
+---
+
+## Agent Pipeline — Current Status
+
+| Agent | Role | Skill File | Version | Status |
+|---|---|---|---|---|
+| Agent_1 | Lyricist & Mood Capturer | `Skills/Agent_1_skill.md` | v2.0 | Active (POC) |
+| Agent_2 | Cultural & Musical Skill Matcher | `Skills/Agent_2_skill.md` | v2.0 | Active (POC) |
+| Agent_3 | Suno API Architect | `Skills/Agent_3_skill.md` | v1.0 | **Pending** — Suno API not yet connected |
+| Agent_4 | UX Frontend | `Skills/Agent_4_skill.md` | v2.0 | Active — repo: `remix-of-life-soundtrack` |
+
+---
+
+## Data Flow
 
 ```
-[User: Essay + optional image/video]
+[User: Essay (10–15 sentences) + optional image/video]
         │
         ▼
-  Agent_1 — Lyricist & Mood Capturer
-  Analyzes emotional tone + historical date context
-  → Outputs: lyrics (EN/KO/JA/ZH/ES), mood analysis, lyric hook
+  Agent_1 — analyzes emotional tone + historical date context
+  → mood_analysis, mood_analysis_scores, history_match, lyrics (×5 languages), song_title
         │
-        ▼
-  Agent_2 — Cultural & Musical Skill Matcher
-  Matches mood to 1 of 13 genres from the Skills Database
-  → Outputs: genre, Suno style tags, instrumentation, artwork prompt
-        │
-        ▼
-  Agent_3 — Suno API Architect  [pending]
-  Builds optimized Suno payload via regression loop (≥3 iterations)
-  → Outputs: suno_payload, curator narration, confidence score
-        │
-        ▼
-  Agent_4 — UX Frontend (remix-of-life-soundtrack)
-  React/TanStack app — essay input, genre selection, song preview, publish flow
-  → repo: team11-changbal/remix-of-life-soundtrack
+        ├──────────────────────────────────┐
+        ▼                                  ▼
+  Agent_2                            Agent_3 (receives lyrics + history_match)
+  matches mood → 1 of 13 genres      builds Suno API payload via regression (≥3 iterations)
+  → genre, suno_style_tags,           → suno_payload, curator_narration,
+    instrumentation, artwork_prompt,    confidence_score, regression_log
+    artist_episode, match_rationale         │
+        │                                  │
+        └──────────────┬───────────────────┘
+                       ▼
+               Agent_4 — UX (remix-of-life-soundtrack)
+               essay input → genre selection → generate → pick → publish
 ```
 
 ---
 
-## Repository Structure
+## Folder Structure
 
 ```
 team11/
-├── README.md                               ← this file
+├── README.md
 └── _orchestration_/
-    ├── orchestration_v3.md                 ← current master spec (v3)
-    ├── readme_draft.md                     ← project status & concept draft
+    ├── orchestration_v3.md          ← master spec
+    ├── readme_draft.md              ← this file
     └── Skills/
-        ├── Agent_1_skill.md                ← Lyricist & Mood Capturer v2.0
-        ├── Agent_2_skill.md                ← Cultural & Musical Skill Matcher v2.0
-        ├── Agent_3_skill.md                ← Suno API Architect v1.0
-        ├── Agent_4_skill.md                ← UX + Global Music Director v2.0
+        ├── Agent_1_skill.md         ← v2.0 active
+        ├── Agent_2_skill.md         ← v2.0 active
+        ├── Agent_3_skill.md         ← v3.0 active
+        ├── Agent_4_skill.md         ← v2.0 active
         └── reference/
             ├── Agent_2_DB_skill.md         ← 13-genre Skills Database (full specs)
             ├── Agent_3_POC_skill.md        ← Agent_3 POC examples
@@ -61,71 +73,70 @@ team11/
 
 ---
 
-## Agent Roles
+## Agent_2 Skills Database — 13 Genres
 
-| Agent | Role | Version | Status |
+Agent_2 selects **exactly one genre** per run via 4-step matching:  
+Emotional Quadrant → Historical Era → Lyric Hook Texture → Single Output
+
+| ID | Genre | Era | Valence | Arousal |
+|---|---|---|---|---|
+| SKILLS_1 | Cool Jazz | 1945–1960 | − | Low |
+| SKILLS_2 | Bebop | 1900–1945 | − | High |
+| SKILLS_3 | Hard Bop | 1945–1975 | − | High |
+| SKILLS_4 | Fusion Jazz | 1960–1975 | −/+ | Mid |
+| SKILLS_5 | Acid Jazz | 1985–2000 | + | High |
+| SKILLS_6 | Bossa Nova | 1945–1960 | +/− | Low |
+| SKILLS_7 | Classical | Pre-1900 | −/+ | Low–High |
+| SKILLS_8 | Modern Pop (Synthpop) | 1975–1985 | + | High |
+| SKILLS_9 | Funk | 1960–1975 | +/− | High |
+| SKILLS_10 | Disco | 1975–1985 | + | High |
+| SKILLS_11 | Soul | 1945–1975 | −/+ | Mid |
+| SKILLS_12 | Country | Any | −/+ | Mid |
+| SKILLS_13 | Ballad Rock | 1975–Any | − | Mid–High |
+
+Full specs (instrumentation, Suno style tags, artwork prompts, artist episodes) → `reference/Agent_2_DB_skill.md`
+
+---
+
+## UX Menu ↔ Agent Contract (Key Decisions)
+
+| UX Element in `compose.tsx` | Agent Owner | Current State | Future State |
 |---|---|---|---|
-| Agent_1 | Lyricist & Mood Capturer | v2.0 | Active (POC) |
-| Agent_2 | Cultural & Musical Skill Matcher | v2.0 | Active (POC) |
-| Agent_3 | Suno API Architect | v1.0 | Pending — API not yet connected |
-| Agent_4 | UX Frontend (remix-of-life-soundtrack) | v2.0 | Active (POC) |
+| Essay textarea | Agent_1 input | Active | No change |
+| Image / video upload | Agent_1 input | Active | No change |
+| "Generate one with AI" image field | Agent_2 → `artwork_prompt` | User types manually | Auto-filled by Agent_2 |
+| Vibe prompt field | Agent_2 → `suno_style_tags` | User types manually | Auto-filled by genre selection |
+| Genre selector (to be built) | Agent_2 output | Not yet built | Chip menu, 13 genres, pre-fills vibe prompt |
+| "Generate 3 candidate songs" button | Agent_3 hidden layer | Static / always clickable | Gated on Agent_3 `confidence_score ≥ 0.75` |
+
+Full UX ↔ Agent contract → `reference/agent-alignment-2026-06-20.md`
 
 ---
 
-## Agent_2 — 13-Genre Skills Database
+## POC Task Status
 
-Agent_2 selects exactly one genre per session via 4-step matching (Emotional Quadrant → Historical Era → Lyric Hook Texture → Single Output):
-
-| # | Genre | Era | Mood |
-|---|---|---|---|
-| 1 | Cool Jazz | 1945–1960 | Dark / Calm |
-| 2 | Bebop | 1900–1945 | Dark / Energetic |
-| 3 | Hard Bop | 1945–1975 | Dark / Energetic |
-| 4 | Fusion Jazz | 1960–1975 | Variable / Mid |
-| 5 | Acid Jazz | 1985–2000 | Bright / Energetic |
-| 6 | Bossa Nova | 1945–1960 | Calm / Variable |
-| 7 | Classical | Pre-1900 | Variable |
-| 8 | Modern Pop (Synthpop) | 1975–1985 | Bright / Energetic |
-| 9 | Funk | 1960–1975 | Energetic |
-| 10 | Disco | 1975–1985 | Bright / Energetic |
-| 11 | Soul | 1945–1975 | Variable / Mid |
-| 12 | Country | Any | Variable / Mid |
-| 13 | Ballad Rock | 1975–Any | Dark / Mid–High |
-
-Full genre specs (instrumentation, Suno style tags, artwork prompts, artist episodes) are in `_orchestration_/Skills/reference/Agent_2_DB_skill.md` and the active skill file `_orchestration_/Skills/Agent_2_skill.md`.
+| # | Task | Status |
+|---|---|---|
+| 1 | Agent folder structure + skill.md drafts | ✅ Done |
+| 2 | Agent_1 skill v2.0 | ✅ Done |
+| 3 | Agent_2 skill v2.0 + 13-genre DB | ✅ Done |
+| 4 | Agent_3 skill v1.0 draft | ✅ Done (implementation pending) |
+| 5 | Agent_4 skill v2.0 + UX state machine | ✅ Done |
+| 6 | Orchestration v3 spec | ✅ Done |
+| 7 | Root README + orchestration readme | ✅ Done (2026-06-20) |
+| 8 | UX: Genre selector in `compose.tsx` | ✅ Optional (2026-06-20) |
+| 9 | Agent_3 Suno API connection | ⏳ ✅ Done |
+| 10 | Preview card (S3): curator narration, language switcher, TikTok hook | ⏳ Pending |
+| 11 | Subscription gate (S4): 30-day trial logic | ⏳ Pending |
+| 12 | Spotify distributor API (S6B) | ⏳ Pending |
+| 13 | Business proposal PPT / pitch deck | ⏳ Pending |
+| 14 | Patent draft | ⏳ Pending |
+| 15 | Legal review: authorship attribution, revenue share | ⏳ Pending |
 
 ---
 
-## UX Flow (Agent_4 — remix-of-life-soundtrack)
+## Open Items (Immediate Next)
 
-1. **Essay Input** — User writes 10–15 sentences + optional image/video
-2. **Genre Selection** — Agent_2 matches essay to one genre; Suno style tags auto-fill the vibe prompt (user can override)
-3. **Generate** — Agent_3 builds Suno payload (static in POC; API-gated in production)
-4. **Pick** — User picks one of 3 candidate songs to post
-5. **Publish** — Share to social or publish to Spotify as creator (30-day free trial gate)
-
----
-
-## Key Design Decisions
-
-- **Vibe prompt = Agent_2 output.** The genre match from Agent_2 auto-fills the vibe prompt with production-ready Suno style tags. Users can type their own override, but the default is Agent_2's selection.
-- **"Generate 3 candidate songs" is static in POC.** In production, this button is gated on Agent_3 returning a valid Suno payload with confidence score ≥ 0.75.
-- **Agent_3 runs hidden.** Users see only the curator narration and confidence badge — not the regression loop.
-
----
-
-## Versioning Policy
-
-- Semantic versioning per agent (`v1.0`, `v2.0`, etc.)
-- Minor bump: any change to input/output schema
-- Major bump: new agent capability
-- All pipeline runs logged to `_orchestration_/Skills/reference/` (once Agent_3 is live)
-- Orchestration spec versioned in `_orchestration_/orchestration_vN.md`
-
----
-
-## Status: POC / Pitch Demo
-
-**Date:** 2026-06-20  
-**Current phase:** Proof of Concept — internal demo  
-See `_orchestration_/orchestration_v3.md` for full task list and pending items.
+- **Genre selector UI** — Replace plain vibe prompt input in `compose.tsx` with Agent_2's 13-genre chip menu; selected genre auto-fills `suno_style_tags` as vibe prompt value
+- **Agent_3 project** — To be added as a separate repo once Suno API access is confirmed
+- **`artwork_prompt` auto-fill** — After genre selection, pre-populate the AI image field with Agent_2's `artwork_prompt`

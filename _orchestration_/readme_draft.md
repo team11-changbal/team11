@@ -63,7 +63,7 @@ team11/
     └── Skills/
         ├── Agent_1_skill.md         ← v2.0 active
         ├── Agent_2_skill.md         ← v2.0 active
-        ├── Agent_3_skill.md         ← v1.0 pending
+        ├── Agent_3_skill.md         ← v3.0 active
         ├── Agent_4_skill.md         ← v2.0 active
         └── reference/
             ├── Agent_2_DB_skill.md         ← 13-genre Skills Database (full specs)
@@ -124,8 +124,8 @@ Full UX ↔ Agent contract → `reference/agent-alignment-2026-06-20.md`
 | 5 | Agent_4 skill v2.0 + UX state machine | ✅ Done |
 | 6 | Orchestration v3 spec | ✅ Done |
 | 7 | Root README + orchestration readme | ✅ Done (2026-06-20) |
-| 8 | UX: Genre selector in `compose.tsx` | ⏳ Pending |
-| 9 | Agent_3 Suno API connection | ⏳ Pending |
+| 8 | UX: Genre selector in `compose.tsx` | ✅ Optional (2026-06-20) |
+| 9 | Agent_3 Suno API connection | ⏳ ✅ Done |
 | 10 | Preview card (S3): curator narration, language switcher, TikTok hook | ⏳ Pending |
 | 11 | Subscription gate (S4): 30-day trial logic | ⏳ Pending |
 | 12 | Spotify distributor API (S6B) | ⏳ Pending |
