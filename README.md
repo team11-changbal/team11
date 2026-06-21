@@ -44,31 +44,19 @@ Life Soundtrack is a two-way social music platform. Users write a personal essay
 
 ```
 team11/
-├── README.md                          ← this file
-├── _orchestration_/
-│   ├── orchestration_v3.md            ← current spec (v3 supersedes v2)
-│   ├── orchestration_v2.md            ← retained for history
-│   ├── readme.md                      ← project concept overview
-│   ├── Tasks/
-│   │   └── agent-alignment-2026-06-20.md   ← UX ↔ Agent contract map
-│   ├── Skills/                        ← (genre DB, future expansions)
-│   ├── Dokyu/                         ← Suno prompt samples, notes
-│   ├── Juhye/                         ← team member notes
-│   └── Lobster/                       ← team member notes
-├── POC/
-│   ├── Agent_1/
-│   │   └── Agent_1_skill.md           ← Lyricist & Mood Capturer v2.0
-│   ├── Agent_2/
-│   │   └── Agent_2_skill.md           ← Cultural & Musical Skill Matcher v2.0
-│   ├── Agent_3/
-│   │   ├── Agent_3_skill.md           ← Suno API Architect v1.0
-│   │   └── memory/
-│   │       └── trained_index.md       ← regression session log index
-│   └── Agent_4/
-│       └── Agent_4_skill.md           ← UX + Global Music Director v2.0
-└── Examples/
-    ├── Agent_2_DB_skill.md            ← 13-genre Skills Database (reference)
-    └── Agent_3_POC_skill.md           ← Agent_3 POC examples
+├── README.md                               ← this file
+└── _orchestration_/
+    ├── orchestration_v3.md                 ← current master spec (v3)
+    ├── readme_draft.md                     ← project status & concept draft
+    └── Skills/
+        ├── Agent_1_skill.md                ← Lyricist & Mood Capturer v2.0
+        ├── Agent_2_skill.md                ← Cultural & Musical Skill Matcher v2.0
+        ├── Agent_3_skill.md                ← Suno API Architect v1.0
+        ├── Agent_4_skill.md                ← UX + Global Music Director v2.0
+        └── reference/
+            ├── Agent_2_DB_skill.md         ← 13-genre Skills Database (full specs)
+            ├── Agent_3_POC_skill.md        ← Agent_3 POC examples
+            └── agent-alignment-2026-06-20.md ← UX ↔ Agent contract map
 ```
 
 ---
@@ -104,7 +92,7 @@ Agent_2 selects exactly one genre per session via 4-step matching (Emotional Qua
 | 12 | Country | Any | Variable / Mid |
 | 13 | Ballad Rock | 1975–Any | Dark / Mid–High |
 
-Full genre specs (instrumentation, Suno style tags, artwork prompts, artist episodes) are in `Examples/Agent_2_DB_skill.md` and embedded in `POC/Agent_2/Agent_2_skill.md`.
+Full genre specs (instrumentation, Suno style tags, artwork prompts, artist episodes) are in `_orchestration_/Skills/reference/Agent_2_DB_skill.md` and the active skill file `_orchestration_/Skills/Agent_2_skill.md`.
 
 ---
 
@@ -131,7 +119,7 @@ Full genre specs (instrumentation, Suno style tags, artwork prompts, artist epis
 - Semantic versioning per agent (`v1.0`, `v2.0`, etc.)
 - Minor bump: any change to input/output schema
 - Major bump: new agent capability
-- All pipeline runs logged to `POC/Agent_3/memory/` (once Agent_3 is live)
+- All pipeline runs logged to `_orchestration_/Skills/reference/` (once Agent_3 is live)
 - Orchestration spec versioned in `_orchestration_/orchestration_vN.md`
 
 ---
